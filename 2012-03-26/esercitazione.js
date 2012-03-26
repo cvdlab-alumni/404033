@@ -71,6 +71,20 @@ var drawCylinder = function(r,h,n,m,color) {
 
 
 
+var drawSphere = function(r,n,m,color) {
+  var dominioSphere = DOMAIN([[0,2*PI],[0,2*PI]])([n,m]);
+  var mappingSphere = function(p) {
+    var u = p[0];
+    var v = p[1];
+    
+    return [r * COS(u) * COS(v), r * COS(u) * SIN(v), r * SIN(v)];
+  };
+  var mappedSphere = MAP(mappingSphere)(dominioSphere);
+  DRAW(mappedSphere);
+  COLOR(color)(mappedSphere);
+};
+
+
 
 
 
