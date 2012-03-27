@@ -86,8 +86,8 @@ var drawSphereOld = function(r,n,m,color) {
 
 
 
-var drawSphere = function(r,n,color) {
-  var dominioSphere = DOMAIN([[0,PI],[0,2*PI]])([n,2*n]);
+var drawSphere = function(r, n, m, color) {
+  var dominioSphere = DOMAIN([[0, PI],[0, 2*PI]])([n, m]);
   var mappingSphere = function(p) {
     /** alfa, beta
     * alfa - angolo tra il raggio ed un piano;
@@ -99,17 +99,17 @@ var drawSphere = function(r,n,color) {
     var v = p[1]; // beta
     
     /** (x,y,z) --> x e y sono le coordinate di una circonferenza
-    * z = r * sin(alfa)
-    * y = r * cos(alfa) * sin(beta)
     * x = r * cos(alfa) * cos(beta)
+    * y = r * cos(alfa) * sin(beta)
+    * z = r * sin(alfa)  --> circonferenza di raggio massimo
     **/
-    return [ r * COS(u) * COS(v), -r * COS(u) * SIN(v), r * SIN(u)];
+    return [r * COS(u) * COS(v), -r * COS(u) * SIN(v), r * SIN(u)];
   };
   var mappedSphere = MAP(mappingSphere)(dominioSphere);
   DRAW(mappedSphere);
   COLOR(color)(mappedSphere);
 };
-drawSphere(2,25,[0,1,0]);
+drawSphere(2, 20, 20, [0,1,0]);
 
 
 
