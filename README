@@ -1,0 +1,27 @@
+var sandwich = function (x, y, z){
+    var sandwich = [];
+    var cuboBucato = [];
+    var dim = 1/3;
+    cuboBucato.push (SIMPLEX_GRID([[-(2*dim),dim],[-(2*dim),dim],[(2*dim),dim]])); // faccia est--up
+    cuboBucato.push (SIMPLEX_GRID([[-(2*dim),dim],[0,dim],[(2*dim),dim]]));  // faccia est--down
+    cuboBucato.push (SIMPLEX_GRID([[-(2*dim),dim],[(2*dim),dim],[-(2*dim),dim]])); // faccia est-sud
+    cuboBucato.push (SIMPLEX_GRID([[-(2*dim),dim],[(2*dim),dim],[0,dim]]));  // faccia est-nord
+    cuboBucato.push (SIMPLEX_GRID([[0,dim],[-(2*dim),dim],[(2*dim),dim]]));  // faccia ovest--up
+    cuboBucato.push (SIMPLEX_GRID([[0,dim],[0,dim],[(2*dim),dim]]));   // faccia ovest--down
+    cuboBucato.push (SIMPLEX_GRID([[0,dim],[(2*dim),dim],[-(2*dim),dim]]));  // faccia ovest-sud
+    cuboBucato.push (SIMPLEX_GRID([[0,dim],[(2*dim),dim],[0,dim]]));   // faccia ovest-nord
+    cuboBucato.push (SIMPLEX_GRID([[(2*dim),dim],[-(2*dim),dim],[-(2*dim),dim]])); // faccia sud--up
+    cuboBucato.push (SIMPLEX_GRID([[(2*dim),dim],[0,dim],[-(2*dim),dim]]));  // faccia sud--down
+    cuboBucato.push (SIMPLEX_GRID([[(2*dim),dim],[-(2*dim),dim],[0,dim]]));  // faccia nord--up
+    cuboBucato.push (SIMPLEX_GRID([[(2*dim),dim],[0,dim],[0,dim]]));   // faccia nord--down
+    for (var zi=0; zi<z; zi++){
+      for (var yi=0; yi<y; yi++){
+        for (var xi=0; xi<x; xi++){
+          sandwich.push(T([0,1,2]) ([ -(xi*(1-dim)),-(yi*(1-dim)),-(zi*(1-dim)) ]) (STRUCT (cuboBucato)));
+          }
+        }
+      }
+
+    sandwich = COLOR([0, 0, 1])(STRUCT(sandwich));
+    DRAW(sandwich);
+}
