@@ -1,3 +1,5 @@
+Come segnalato nella mail di qualche ora fa, non sono riuscito a risolvere il problema al pc per cui inserisco qui l'homework
+
 var sandwich = function (x, y, z){
     var sandwich = [];
     var cuboBucato = [];
