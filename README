@@ -1,4 +1,5 @@
-Come segnalato nella mail di qualche ora fa, non sono riuscito a risolvere il problema al pc per cui inserisco qui l'homework
+Come segnalato nella mail di qualche ora fa, non sono riuscito a risolvere il problema al pc per cui inserisco qui 
+l'homework
 
 var sandwich = function (x, y, z){
     var sandwich = [];
@@ -27,3 +28,34 @@ var sandwich = function (x, y, z){
     sandwich = COLOR([0, 0, 1])(STRUCT(sandwich));
     DRAW(sandwich);
 }
+
+
+ecco una seconda versione del homework, in quanto non sono sicuro al 100% di aver ben interpretato la richiesta
+
+var x = [1,1,1,-1,-1,1,-1,-1];
+var y = 4
+var z = [1,1,-1,1,-1,-1,1];
+
+var sandwichV2 = function (x, y, z){
+    var strutFinal = [];
+	var strutPiena = SIMPLEX_GRID([[0,1],[0,y],[0,1]]); 
+	var strutBucata = [];
+	strutBucata.push( SIMPLEX_GRID([[0,1],[0,(y*2/4)],[0,1]]) ); 
+	strutBucata.push( SIMPLEX_GRID([[0,1],[-(y*3/4),(y/4)],[0,1]]) );
+	for (var zi=0; zi<z.length; zi++){
+		for (var xi=0; xi<x.length; xi++){
+			if (z[zi]>=0){
+				if (x[xi]>=0)
+					strutFinal.push( T([0,1,2])([xi,0,zi])(strutPiena) );
+				else
+					strutFinal.push( T([0,1,2])([xi,0,zi])(STRUCT (strutBucata)) );
+			}else{
+				strutFinal.push( T([0,1,2])([xi,0,zi])(STRUCT (strutBucata)) );
+				}	
+		 	}
+		 }	
+	strutFinal = COLOR([0, 0, 1])(STRUCT (strutFinal));
+	DRAW (strutFinal);
+}
+
+sandwichV2(x,y,z);
