@@ -25,19 +25,25 @@ DRAW(curve);
 
 
 //Exercise 4 - BEZIER
-var domain = INTERVALS(1)(40);
+var domain = INTERVALS(1)(20);
 var controls = [[0,0],[3,1],[1,2],[2,3],[3,2]];
 var mapping = BEZIER(S0)(controls);
 var curve = MAP(mapping)(domain);
 DRAW(curve);
 
 
-//Exercise 5 - 
+//Exercise 5 - SPLINE, CUBIC_CARDINAL
+var domain = INTERVALS(1)(20);
+var controls = [[-3,6,1],[-4,2,3],[-3,-1,-4],[-1,1,2],[1.5,1.5,0],[3,4,8],[5,5,3],[7,2,1],[6,-2,-1],[2,-3,2]];
+var spline = SPLINE(CUBIC_CARDINAL(domain))(controls);
+DRAW(spline);
 
 
-
-
-
+//Exercise 6 - SPLINE, CUBICUBSPLINE 
+var domain = INTERVALS(1)(20);
+var controls = [[-3,6,1],[-4,2,3],[-3,-1,-4],[-1,1,2],[1.5,1.5,0],[3,4,8],[5,5,3],[7,2,1],[6,-2,-1],[2,-3,2]];
+var spline = SPLINE(CUBIC_UBSPLINE(domain))(controls);
+DRAW(spline);
 
 
 
