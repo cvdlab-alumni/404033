@@ -1,6 +1,8 @@
 //Exercise 2
 //Produce the model of the fuselage (local coordinate system).
 
+//NOTA - In questo esercizio il codice commentato non e' stato volutamente tolto per mostrare i passaggi fatti per arrivare a questo risultato
+
 // fuselage part1 structure
 var fuselage_domain = INTERVALS (1)(8);
 var fuselage_controls1 = [[4,2.5,0],[4,2.5,-1],[4,5,-5],[4,7.5,-1],[4,7.5,0]];
@@ -324,3 +326,39 @@ DRAW (COLOR ([146/255, 142/255, 140/255]) (fuselage_volume4));
 		var l_elix_v = BEZIER(S2)([l_elix_s1, l_elix_s2]);
 		var l_elix_volume = MAP(l_elix_v)(l_elix_domain);
 		DRAW (COLOR ([146/255, 142/255, 140/255]) (l_elix_volume));	
+
+
+// Wheels
+	var wheel_controls1 = [[0.2,1,-1.4],[0.3,0.2,-1.4],[1.6,1,-1.4],[0.3,1.8,-1.4],[0.2,1,-1.4]];
+	var wheel_c1 = BEZIER(S0)(wheel_controls1);
+
+	var wheel_controls2 = [[0.1,1,-1.5],[0.2,0,-1.5],[2,1,-1.5],[0.2,2,-1.5],[0.1,1,-1.5]];
+	var wheel_c2 = BEZIER(S0)(wheel_controls2);
+
+	var wheel_controls3 = [[0.1,1,-1.6],[0.2,0,-1.6],[2,1,-1.6],[0.2,2,-1.6],[0.1,1,-1.6]];
+	var wheel_c3 = BEZIER(S0)(wheel_controls3);
+
+	var wheel_controls4 = [[0.2,1,-1.7],[0.3,0.2,-1.7],[1.6,1,-1.7],[0.3,1.8,-1.7],[0.2,1,-1.7]];
+	var wheel_c4 = BEZIER(S0)(wheel_controls4);
+
+	var wheel_domain2 = DOMAIN([[0,1],[0,1]])([20,20]);
+	var wheel_s = BEZIER(S1)([wheel_c1, wheel_c2, wheel_c3, wheel_c4]);
+	var wheel_surf = MAP(wheel_s)(wheel_domain2);
+	DRAW (COLOR ([0, 0, 0]) (T([0,1,2])([1.5,0.5,0])( wheel_surf) ));
+
+	DRAW( T([0,1,2])([0.48+1.5,1+0.5,-1.42])(DISK(0.29)(20)));
+	DRAW( T([0,1,2])([0.48+1.5,1+0.5,-1.68])(DISK(0.29)(20)));
+
+	var wheel2_surf = S([2])([-1])(wheel_surf);
+	DRAW (COLOR ([0, 0, 0]) (T([0,1,2])([1.5,0.5,0])(wheel2_surf)));
+	DRAW( T([0,1,2])([0.48+1.5,1+0.5,1.42])(DISK(0.29)(20)));
+	DRAW( T([0,1,2])([0.48+1.5,1+0.5,1.68])(DISK(0.29)(20)));
+
+	var linkWheels = SIMPLEX_GRID ([[-0.48-1.5,0.05],[-1-0.5,0.05],[0,3]]);
+	DRAW (T([0,1,2])([0,0,-1.5])(linkWheels));
+
+	var linkWheelsAirplane = SIMPLEX_GRID ([[-0.48-1.5,0.05],[-1-0.5,4],[-0.5,0.05]]);
+	DRAW (T([0,1,2])([0,0,-1.5])(linkWheelsAirplane));
+
+	var linkWheelsAirplane2 = SIMPLEX_GRID ([[-0.48-1.5,0.05],[-1-0.5,4],[-2.5,0.05]]);
+	DRAW (T([0,1,2])([0,0,-1.5])(linkWheelsAirplane2));

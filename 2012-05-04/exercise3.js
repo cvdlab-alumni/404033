@@ -1,6 +1,8 @@
 //Exercise 3
 //Produce the model of horizontal and vertical stabilizers (local coordinate system).
 
+//NOTA - In questo esercizio il codice commentato non e' stato volutamente tolto per mostrare i passaggi fatti per arrivare a questo risultato
+
 var posAirplane = 0;
 var hAirplane = 0;
 

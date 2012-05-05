@@ -1,6 +1,8 @@
 //Exercise 1
 //Produce the model of a single wing in a local coordinate system.
 
+//NOTA - In questo esercizio il codice commentato non e' stato volutamente tolto per mostrare i passaggi fatti per arrivare a questo risultato
+
 // wing structure
 var wing_domain = INTERVALS(1)(30);
 var wing_pCont0 = [[1.8,1,0],[0.4,1.4,0],[4,2.8,0],[6,0.85,0],[6.5,0.9,0],[6.7,1,0],[1.8,1,0]];
