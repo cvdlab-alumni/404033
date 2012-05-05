@@ -15,7 +15,8 @@ var fuselage_c2 = BEZIER(S0)(fuselage_controls2);
 
 var fuselage_controls3 = fuselage_controls1.map(function(p){return [p[0]+4, p[1]-1, p[2]]});
 var fuselage_c3 = BEZIER(S0)(fuselage_controls3);
-//ar fuselage_curve3 = MAP (fuselage_c3) (fuselage_domain);
+
+//var fuselage_curve3 = MAP (fuselage_c3) (fuselage_domain);  
 //DRAW (fuselage_curve3);
 
 var fuselage_controls4 = fuselage_controls2.map(function(p){return [p[0]+4, p[1]-1, p[2]]});
