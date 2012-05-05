@@ -142,7 +142,7 @@ DRAW (COLOR ([91/255, 51/255, 45/255]) (fuselage_surf26));
 
 
 // fuselage part2 volume
-var fuselage_domain3 = DOMAIN([[0,1],[0,1],[0,1]])([8,20,20]);
+var fuselage_domain3 = DOMAIN([[0,1],[0,1],[0,1]])([8,15,15]);
 var fuselage_v21 = BEZIER(S2)([fuselage_s21, fuselage_s22]);
 var fuselage_v22 = BEZIER(S2)([fuselage_s23, fuselage_s24]);
 var fuselage_volume21 = MAP(fuselage_v21)(fuselage_domain3);
@@ -186,7 +186,7 @@ var fuselage_c36 = BEZIER(S0)(fuselage_controls36);
 
 
 // fuselage part3 surface
-var fuselage_domain2 = DOMAIN([[0,1],[0,1]])([30,30]);
+var fuselage_domain2 = DOMAIN([[0,1],[0,1]])([20,20]);
 var fuselage_s31 = BEZIER(S1)([fuselage_c35, fuselage_c31, fuselage_c33]);
 var fuselage_s32 = BEZIER(S1)([fuselage_c36, fuselage_c32, fuselage_c34]);
 //var fuselage_surf31 = MAP(fuselage_s31)(fuselage_domain2);
@@ -196,7 +196,7 @@ var fuselage_s32 = BEZIER(S1)([fuselage_c36, fuselage_c32, fuselage_c34]);
 
 
 // fuselage part3 volume
-var fuselage_domain3 = DOMAIN([[0,1],[0,1],[0,1]])([40,10,10]);
+var fuselage_domain3 = DOMAIN([[0,1],[0,1],[0,1]])([20,10,10]);
 var fuselage_v3 = BEZIER(S2)([fuselage_s31, fuselage_s32]);
 var fuselage_volume3 = MAP(fuselage_v3)(fuselage_domain3);
 DRAW (COLOR ([146/255, 142/255, 140/255]) (fuselage_volume3));
@@ -237,7 +237,7 @@ var fuselage_c46 = BEZIER(S0)(fuselage_controls46);
 
 
 // fuselage part4 surface
-var fuselage_domain2 = DOMAIN([[0,1],[0,1]])([30,30]);
+var fuselage_domain2 = DOMAIN([[0,1],[0,1]])([20,20]);
 var fuselage_s41 = BEZIER(S1)([fuselage_c45, fuselage_c41, fuselage_c43]);
 var fuselage_s42 = BEZIER(S1)([fuselage_c46, fuselage_c42, fuselage_c44]);
 //var fuselage_surf41 = MAP(fuselage_s41)(fuselage_domain2);
@@ -247,7 +247,7 @@ var fuselage_s42 = BEZIER(S1)([fuselage_c46, fuselage_c42, fuselage_c44]);
 
 
 // fuselage part4 volume
-var fuselage_domain4 = DOMAIN([[0,1],[0,1],[0,1]])([40,10,10]);
+var fuselage_domain4 = DOMAIN([[0,1],[0,1],[0,1]])([20,10,10]);
 var fuselage_v4 = BEZIER(S2)([fuselage_s41, fuselage_s42]);
 var fuselage_volume4 = MAP(fuselage_v4)(fuselage_domain4);
 DRAW (COLOR ([146/255, 142/255, 140/255]) (fuselage_volume4));
@@ -279,7 +279,7 @@ DRAW (COLOR ([146/255, 142/255, 140/255]) (fuselage_volume4));
 	var front_s2 = BEZIER(S1)([front_c2, front_c4, front_c6]);
 
 // front volume
-	var front_domain = DOMAIN([[0,1],[0,1],[0,1]])([30,10,10]);
+	var front_domain = DOMAIN([[0,1],[0,1],[0,1]])([20,10,10]);
 	var front_v = BEZIER(S2)([front_s1, front_s2]);
 	var front_volume = MAP(front_v)(front_domain);
 	DRAW (COLOR ([146/255, 142/255, 140/255]) (front_volume));
