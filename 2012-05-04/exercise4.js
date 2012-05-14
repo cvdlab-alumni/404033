@@ -408,3 +408,5 @@ var drawAirplane = function (){
 	DRAW (T([0,1,2])([0,0,-1.5])(linkWheelsAirplane2));
 
 };
+
+drawAirplane();
