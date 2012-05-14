@@ -1,0 +1,1 @@
+Il modello rappresenta una sedia a dondolo presente in casa
