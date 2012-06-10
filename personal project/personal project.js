@@ -6,10 +6,9 @@ var littleFinger_l = 11; //4 - 3 - 2 - 2
 var ringFinger_l = 12.7; //4.7 - 3.5 - 2.5 - 2
 var middleFinger_l = 14.4; //5.2 - 4.2 - 3 - 2
 var indexFinger_l = 12.7; //4.7 - 3.5 - 2.5 - 2
+var thumbFinger_l = 8; //3 - 3 - 2
 
-var thumbFinger_l = 8; //12
-
-var color = [222/255, 184/255, 135/255];
+var color = [238/255, 232/255, 170/255];
 
 
 function draw_MetacarpalsFalanges (bone_r, bone_l, color){
@@ -227,11 +226,13 @@ function draw_lastFalanges (bone_r, bone_lung, color){
 	var ringFinger_Metacarpals = T ([0,1,2]) ([0,0,-(finger_r/2)]) (R ([0,2]) ([alfa]) (draw_MetacarpalsFalanges (finger_r, (ringFinger_l*4.7/13.5), color)));
 	var middleFinger_Metacarpals = draw_MetacarpalsFalanges (finger_r, (middleFinger_l*5.2/15.5), color); 
 	var indexFinger_Metacarpals = T ([0,1,2]) ([0,0,(finger_r/2)]) (R ([0,2]) ([-alfa]) (draw_MetacarpalsFalanges (finger_r, (indexFinger_l*4.7/13.5), color)));
+	var thumbFinger_Metacarpals = T ([0,1,2]) ([0,-finger_r/2,(finger_r)]) (R ([0,2]) ([-alfa*4]) (draw_MetacarpalsFalanges (finger_r*1.2, (thumbFinger_l*3/8), color)));
 
 	DRAW (littleFinger_Metacarpals);
 	DRAW (ringFinger_Metacarpals);
 	DRAW (middleFinger_Metacarpals);
 	DRAW (indexFinger_Metacarpals);
+	DRAW (thumbFinger_Metacarpals);
 
 
 // finger 1 falanges
@@ -239,19 +240,23 @@ function draw_lastFalanges (bone_r, bone_lung, color){
 	var rf_diffX1 = ringFinger_l*4.7/13.5*Math.cos(alfa) + 0.02;
 	var mf_diffX1 = middleFinger_l*5.2/15.5 + 0.01;
 	var if_diffX1 = indexFinger_l*4.7/13.5*Math.cos(alfa) + 0.02;
+	var tf_diffX1 = thumbFinger_l*3/8*Math.cos(alfa*4);
 	var lf_diffY1 = -(finger_r + littleFinger_l*4/11*Math.sin(alfa*2) + 0.05);
 	var rf_diffY1 = -(finger_r/2 + ringFinger_l*4.7/13.5*Math.sin(alfa));
 	var mf_diffY1 = 0;
 	var if_diffY1 = finger_r/2 + indexFinger_l*4.7/13.5*Math.sin(alfa);
+	var tf_diffY1 = finger_r + thumbFinger_l*3/8*Math.sin(alfa*4) + 0.02;
 	var littleFinger_Falanges1 = T ([0,1,2]) ([lf_diffX1,0,lf_diffY1]) (R ([0,2]) ([alfa*2]) (draw_MetacarpalsFalanges (finger_r/1.2, (littleFinger_l*3/11), color)));
 	var ringFinger_Falanges1 = T ([0,1,2]) ([rf_diffX1,0,rf_diffY1]) (R ([0,2]) ([alfa]) (draw_MetacarpalsFalanges (finger_r/1.2, (ringFinger_l*3.5/13.5), color)));
 	var middleFinger_Falanges1 = T ([0,1,2]) ([mf_diffX1,0,mf_diffY1]) (draw_MetacarpalsFalanges (finger_r/1.2, (middleFinger_l*4.2/15.5), color)); 
 	var indexFinger_Falanges1 = T ([0,1,2]) ([if_diffX1,0,if_diffY1]) (R ([0,2]) ([-alfa]) (draw_MetacarpalsFalanges (finger_r/1.2, (indexFinger_l*3.5/13.5), color)));
+	var thumbFinger_Falanges1 = T ([0,1,2]) ([tf_diffX1,-finger_r/2,tf_diffY1]) (R ([0,2]) ([-alfa*4]) (draw_MetacarpalsFalanges (finger_r, (thumbFinger_l*3/8), color)));
 
 	DRAW (littleFinger_Falanges1);
 	DRAW (ringFinger_Falanges1);
 	DRAW (middleFinger_Falanges1);
 	DRAW (indexFinger_Falanges1);
+	DRAW (thumbFinger_Falanges1);
 
 
 // finger 2 falanges
@@ -259,19 +264,23 @@ function draw_lastFalanges (bone_r, bone_lung, color){
 	var rf_diffX2 = ringFinger_l*3.5/13.5*Math.cos(alfa) + rf_diffX1 + 0.02;
 	var mf_diffX2 = middleFinger_l*4.2/15.5 + mf_diffX1 + 0.01;
 	var if_diffX2 = indexFinger_l*3.5/13.5*Math.cos(alfa) + if_diffX1 + 0.02;
+	var tf_diffX2 = thumbFinger_l*3/8*Math.cos(alfa*4) + tf_diffX1 + 0.15;
 	var lf_diffY2 = -(finger_r + lf_diffX2*Math.sin(alfa*2) + 0.15);
 	var rf_diffY2 = -(finger_r/2 + rf_diffX2*Math.sin(alfa));
 	var mf_diffY2 = 0;
 	var if_diffY2 = finger_r/2 + if_diffX2*Math.sin(alfa);
+	var tf_diffY2 = finger_r + tf_diffX2*Math.sin(alfa*4) + 0.5;
 	var littleFinger_Falanges2 = T ([0,1,2]) ([lf_diffX2,0,lf_diffY2]) (R ([0,2]) ([alfa*2]) (draw_MetacarpalsFalanges (finger_r/1.4, (littleFinger_l*2/11), color)));
 	var ringFinger_Falanges2 = T ([0,1,2]) ([rf_diffX2,0,rf_diffY2]) (R ([0,2]) ([alfa]) (draw_MetacarpalsFalanges (finger_r/1.4, (ringFinger_l*2.5/13.5), color)));
 	var middleFinger_Falanges2 = T ([0,1,2]) ([mf_diffX2,0,mf_diffY2]) (draw_MetacarpalsFalanges (finger_r/1.4, (middleFinger_l*3/15.5), color)); 
 	var indexFinger_Falanges2 = T ([0,1,2]) ([if_diffX2,0,if_diffY2]) (R ([0,2]) ([-alfa]) (draw_MetacarpalsFalanges (finger_r/1.4, (indexFinger_l*2.5/13.5), color)));
+	var thumbFinger_Falanges2 = T ([0,1,2]) ([tf_diffX2,-finger_r/2,tf_diffY2]) (R ([0,2]) ([-alfa*4]) (draw_lastFalanges (finger_r/1.1, (thumbFinger_l*2/8), color)));
 
 	DRAW (littleFinger_Falanges2);
 	DRAW (ringFinger_Falanges2);
 	DRAW (middleFinger_Falanges2);
 	DRAW (indexFinger_Falanges2);
+	DRAW (thumbFinger_Falanges2);
 
 
 // finger 3 falanges
@@ -283,10 +292,10 @@ function draw_lastFalanges (bone_r, bone_lung, color){
 	var rf_diffY3 = -(finger_r/2 + rf_diffX3*Math.sin(alfa));
 	var mf_diffY3 = 0;
 	var if_diffY3 = finger_r/2 + if_diffX3*Math.sin(alfa);
-	var littleFinger_Falanges3 = T ([0,1,2]) ([lf_diffX3,0,lf_diffY3]) (R ([0,2]) ([alfa*2]) (draw_lastFalanges (finger_r/1.7, (littleFinger_l*2/11), color)));
-	var ringFinger_Falanges3 = T ([0,1,2]) ([rf_diffX3,0,rf_diffY3]) (R ([0,2]) ([alfa]) (draw_lastFalanges (finger_r/1.7, (ringFinger_l*2/13.5), color)));
-	var middleFinger_Falanges3 = T ([0,1,2]) ([mf_diffX3,0,mf_diffY3]) (draw_lastFalanges (finger_r/1.7, (middleFinger_l*2/15.5), color)); 
-	var indexFinger_Falanges3 = T ([0,1,2]) ([if_diffX3,0,if_diffY3]) (R ([0,2]) ([-alfa]) (draw_lastFalanges (finger_r/1.7, (indexFinger_l*2/13.5), color)));
+	var littleFinger_Falanges3 = T ([0,1,2]) ([lf_diffX3,0,lf_diffY3]) (R ([0,2]) ([alfa*2]) (draw_lastFalanges (finger_r/1.4, (littleFinger_l*2/11), color)));
+	var ringFinger_Falanges3 = T ([0,1,2]) ([rf_diffX3,0,rf_diffY3]) (R ([0,2]) ([alfa]) (draw_lastFalanges (finger_r/1.4, (ringFinger_l*2/13.5), color)));
+	var middleFinger_Falanges3 = T ([0,1,2]) ([mf_diffX3,0,mf_diffY3]) (draw_lastFalanges (finger_r/1.4, (middleFinger_l*2/15.5), color)); 
+	var indexFinger_Falanges3 = T ([0,1,2]) ([if_diffX3,0,if_diffY3]) (R ([0,2]) ([-alfa]) (draw_lastFalanges (finger_r/1.4, (indexFinger_l*2/13.5), color)));
 
 	DRAW (littleFinger_Falanges3);
 	DRAW (ringFinger_Falanges3);
